@@ -33,6 +33,44 @@ add_action( 'wp_enqueue_scripts', 'liam_scripts' );
 
 
 
+/************************* BLOG PAGINATION ***********************/
+if ( ! function_exists( 'liam_pagination' ) ) :
+	/*** Pagination for the theme ***/
+	function liam_pagination() {
+		$settings = get_option( 'blog_options' );
+		if(isset( $settings["liam_pagination"] ) && $settings["liam_pagination"] == "nextprev"):
+			// Previous/next page navigation.
+			echo "<div class='prevpostlink'>" . get_previous_posts_link(__( '&lt; Previous page', 'liam' )) . "</div>";
+			echo "<div class='nextpostlink'>" . get_next_posts_link(__( 'Next page &gt;', 'liam' )) . "</div>";
+		else:
+			global $wp_query;
+			$big = 999999999; // need an unlikely integer
+			$translated = __( 'Page', 'liam' ); // Supply translatable string
+			$pagination =  paginate_links( array(
+				'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+				'format' => '?paged=%#%',
+				'current' => max( 1, get_query_var('paged') ),
+				'total' => $wp_query->max_num_pages,
+				'type' => 'array',
+				'prev_next' => true,
+				'prev_text'	=> '&laquo;',
+				'next_text'	=> '&raquo;',
+				'before_page_number' => ''
+			) );
+			if(count($pagination) > 0):
+				$pagestr = '<ul class="pagination">';
+				foreach($pagination as $pagenum):
+					$pagestr .= '<li>' . $pagenum . '</li>';
+				endforeach;
+				$pagestr .= '</ul>';
+				echo $pagestr;
+			endif;
+		endif;
+	}
+endif;
+
+
+
 /************************* ADD FAVICON ***********************/
 function add_my_favicon() {
 	$favicon_path = get_stylesheet_directory_uri() . '/favicon.png';
