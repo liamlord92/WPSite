@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-	<main id="main" class="full-width site-main content-area" role="main">
+	<main id="main" class="full-width site-main page-content" role="main">
         
         <section class="full-width">
             <div class="content-width content-max-width-1024 pad-h-20-1099">

@@ -17,7 +17,7 @@
                     <div class="full-width">
                     
                         <div class="left-content" id="site-logo">
-                            <span class="color-white"><?php echo get_blogInfo('name'); ?>
+                            <a href="<?php echo get_site_url(); ?>" class="color-white"><?php echo get_blogInfo('name'); ?></a>
                         </div>
                         
                         <nav id="site-navigation" class="main-navigation right-content" role="navigation">
@@ -29,5 +29,9 @@
                     </div>
                 </div>
             </header>
+
+            <div class="full-width" id="hero-wrapper">
+                <?php get_template_part("template-parts/content-hero"); ?>
+            </div>
             
             <div class="full-width" id="main-wrapper">
