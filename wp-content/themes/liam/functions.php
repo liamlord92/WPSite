@@ -19,11 +19,9 @@ add_action( 'after_setup_theme', 'liam_setup' );
 
 
 
-/**
- * Enqueue scripts and styles.
- */
+/************************* ENQUEUE SCRIPTS & STYLES ***********************/
 function liam_scripts() {
-	// MAIN STYLESHEET WITH THEME DETIALS ONLY
+	// MAIN STYLESHEET WITH THEME DETAILS ONLY
 	wp_enqueue_style( 'liam-style', get_stylesheet_uri() );
 
 	// STYLE SHEETS
