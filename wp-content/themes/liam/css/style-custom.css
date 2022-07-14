@@ -85,3 +85,15 @@ footer{
     background-color: #eeeeee;
     padding: 50px 0;
 }
+
+.hidden{
+    display: none;
+}
+
+.show{
+    display: block;
+}
+
+.show-flex{
+    display: flex;
+}
